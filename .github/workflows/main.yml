@@ -10,7 +10,7 @@ env:
   ECR: "906440755908.dkr.ecr.eu-central-1.amazonaws.com"
 
 jobs:    
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -33,11 +33,19 @@ jobs:
           docker push $ECR/$NAME:$VERSION_PREFIX.$GITHUB_RUN_NUMBER
           docker push $ECR/$NAME:latest
           echo "$ECR/$NAME:$VERSION_PREFIX.$GITHUB_RUN_NUMBER published"
+    
+    - name: Fill in the new image ID in the Amazon ECS task definition
+      id: task-def
+      uses: aws-actions/amazon-ecs-render-task-definition@v1
+      with:
+        task-definition: task-definition.json
+        container-name: $NAME
+        image: $ECR/$NAME:$VERSION_PREFIX.$GITHUB_RUN_NUMBER
 
     - name: Deploy Amazon ECS task definition
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
-        task-definition: containerstackContainerisedAppFargateServiceTaskDef8B9E22C4
+        task-definition:  ${{ steps.task-def.outputs.task-definition }}
         service: container-stack-ContainerisedAppFargateService3ABC1342-ziypVOnK9RV6
         cluster: container-stack-ContainerisedAppECSCluster86B29B23-WWITJ1HCfUVE
         wait-for-service-stability: true

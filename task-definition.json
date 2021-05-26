@@ -1,0 +1,82 @@
+{
+    "taskDefinitionArn": "arn:aws:ecs:eu-central-1:906440755908:task-definition/containerstackContainerisedAppFargateServiceTaskDef8B9E22C4:3",
+    "containerDefinitions": [
+        {
+            "name": "web",
+            "image": "amazon/amazon-ecs-sample",
+            "cpu": 0,
+            "links": [],
+            "portMappings": [
+                {
+                    "containerPort": 80,
+                    "hostPort": 80,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true,
+            "entryPoint": [],
+            "command": [],
+            "environment": [],
+            "environmentFiles": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "secrets": [],
+            "dnsServers": [],
+            "dnsSearchDomains": [],
+            "extraHosts": [],
+            "dockerSecurityOptions": [],
+            "dockerLabels": {},
+            "ulimits": [],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "container-stack-ContainerisedAppFargateServiceTaskDefwebLogGroupE53B63B1-ofXezjRYLNVT",
+                    "awslogs-region": "eu-central-1",
+                    "awslogs-stream-prefix": "Containerised-App-Fargate-Service"
+                },
+                "secretOptions": []
+            },
+            "systemControls": []
+        }
+    ],
+    "family": "containerstackContainerisedAppFargateServiceTaskDef8B9E22C4",
+    "taskRoleArn": "arn:aws:iam::906440755908:role/container-stack-ContainerisedAppFargateServiceTask-1KLCKCQ526I53",
+    "executionRoleArn": "arn:aws:iam::906440755908:role/container-stack-ContainerisedAppFargateServiceTask-GH7IKU90QKKW",
+    "networkMode": "awsvpc",
+    "revision": 3,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+            "name": "ecs.capability.execution-role-awslogs"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.17"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "256",
+    "memory": "512"
+}
