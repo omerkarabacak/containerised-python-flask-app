@@ -40,7 +40,7 @@ jobs:
       with:
         task-definition: task-definition.json
         container-name: web
-        image: ${{ env.ECR }}/${{ env.NAME }}:${{ env.VERSION_PREFIX }}.$GITHUB_RUN_NUMBER
+        image: "${{ env.ECR }}/${{ env.NAME }}:${{ env.VERSION_PREFIX }}.$GITHUB_RUN_NUMBER"
 
     - name: Deploy Amazon ECS task definition
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
