@@ -39,8 +39,8 @@ jobs:
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
         task-definition: task-definition.json
-        container-name: $NAME
-        image: $ECR/$NAME:$VERSION_PREFIX.$GITHUB_RUN_NUMBER
+        container-name: container-stack-containerisedapprepository181f38df-qmk6dzgbaa3p
+        image: 906440755908.dkr.ecr.eu-central-1.amazonaws.com/container-stack-containerisedapprepository181f38df-qmk6dzgbaa3p:latest
 
     - name: Deploy Amazon ECS task definition
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
