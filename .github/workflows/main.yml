@@ -10,7 +10,7 @@ env:
   ECR: "906440755908.dkr.ecr.eu-central-1.amazonaws.com"
 
 jobs:    
-  build-and-deploy:
+  package-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -39,7 +39,7 @@ jobs:
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
         task-definition: task-definition.json
-        container-name: container-stack-containerisedapprepository181f38df-qmk6dzgbaa3p
+        container-name: web
         image: 906440755908.dkr.ecr.eu-central-1.amazonaws.com/container-stack-containerisedapprepository181f38df-qmk6dzgbaa3p:latest
 
     - name: Deploy Amazon ECS task definition

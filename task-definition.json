@@ -1,8 +1,7 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:eu-central-1:906440755908:task-definition/containerstackContainerisedAppFargateServiceTaskDef8B9E22C4:3",
     "containerDefinitions": [
         {
-            "name": "container-stack-containerisedapprepository181f38df-qmk6dzgbaa3p",
+            "name": "web",
             "image": "906440755908.dkr.ecr.eu-central-1.amazonaws.com/container-stack-containerisedapprepository181f38df-qmk6dzgbaa3p:latest",
             "cpu": 0,
             "links": [],
@@ -43,37 +42,8 @@
     "taskRoleArn": "arn:aws:iam::906440755908:role/container-stack-ContainerisedAppFargateServiceTask-1KLCKCQ526I53",
     "executionRoleArn": "arn:aws:iam::906440755908:role/container-stack-ContainerisedAppFargateServiceTask-GH7IKU90QKKW",
     "networkMode": "awsvpc",
-    "revision": 3,
     "volumes": [],
-    "status": "ACTIVE",
-    "requiresAttributes": [
-        {
-            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
-        },
-        {
-            "name": "ecs.capability.execution-role-awslogs"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.17"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.task-iam-role"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
-        },
-        {
-            "name": "ecs.capability.task-eni"
-        }
-    ],
     "placementConstraints": [],
-    "compatibilities": [
-        "EC2",
-        "FARGATE"
-    ],
     "requiresCompatibilities": [
         "FARGATE"
     ],
