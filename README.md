@@ -8,6 +8,8 @@ AWS CDK (Python) used for Infrastructure as Code (Seperate repository)
 * AWS ECR
 * AWS ECS
 
+IaC repository: https://github.com/omerkarabacak/multi-stack-aws-cdk-python-iac-project
+
 ## CICD
 
 Github Actions used for auto building docker image and deploying it to AWS ECS
