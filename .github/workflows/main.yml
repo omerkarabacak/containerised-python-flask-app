@@ -6,6 +6,7 @@ on:
 
 env:
   VERSION_PREFIX: "1.0"
+  VERSION_SUFFIX: $GITHUB_RUN_NUMBER
   NAME: "container-stack-containerisedapprepository181f38df-qmk6dzgbaa3p"
   ECR: "906440755908.dkr.ecr.eu-central-1.amazonaws.com"
 
@@ -28,11 +29,11 @@ jobs:
       run: |
           aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin $ECR
           docker build -t $NAME .
-          docker tag $NAME $ECR/$NAME:$VERSION_PREFIX.$GITHUB_RUN_NUMBER
+          docker tag $NAME $ECR/$NAME:$VERSION_PREFIX.$VERSION_SUFFIX
           docker tag $NAME $ECR/$NAME:latest
-          docker push $ECR/$NAME:$VERSION_PREFIX.$GITHUB_RUN_NUMBER
+          docker push $ECR/$NAME:$VERSION_PREFIX.$VERSION_SUFFIX
           docker push $ECR/$NAME:latest
-          echo "$ECR/$NAME:$VERSION_PREFIX.$GITHUB_RUN_NUMBER published"
+          echo "$ECR/$NAME:$VERSION_PREFIX.$VERSION_SUFFIX published"
     
     - name: Fill in the new image ID in the Amazon ECS task definition
       id: task-def
@@ -40,7 +41,7 @@ jobs:
       with:
         task-definition: task-definition.json
         container-name: web
-        image: "${{ env.ECR }}/${{ env.NAME }}:${{ env.VERSION_PREFIX }}.$GITHUB_RUN_NUMBER"
+        image: ${{ env.ECR }}/${{ env.NAME }}:${{ env.VERSION_PREFIX }}.${{ env.VERSION_SUFFIX }}
 
     - name: Deploy Amazon ECS task definition
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
