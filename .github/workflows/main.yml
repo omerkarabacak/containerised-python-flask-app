@@ -6,7 +6,7 @@ on:
 
 env:
   VERSION_PREFIX: "1.0"
-  VERSION_SUFFIX: $GITHUB_RUN_NUMBER
+  VERSION_SUFFIX: ${{ github.run_number }}
   NAME: "container-stack-containerisedapprepository181f38df-qmk6dzgbaa3p"
   ECR: "906440755908.dkr.ecr.eu-central-1.amazonaws.com"
 
